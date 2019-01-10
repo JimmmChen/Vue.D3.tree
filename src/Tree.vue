@@ -525,6 +525,7 @@ export default {
 
 .treeclass .nodetree.selected text {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .treeclass .node--internal text {
