@@ -431,6 +431,11 @@ export default {
       return this.updateGraph(origin).then(() => true)
     },
 
+    selectNode (d) {
+      currentSelected = d
+      this.redraw()
+    },
+
     resetZoom () {
       if (!this.zoomable) {
         return Promise.resolve(false)
