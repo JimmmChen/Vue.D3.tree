@@ -22,6 +22,10 @@ const layouts = ['circular', 'euclidean']
 
 const props = {
   data: Object,
+  showStat: {
+    type: Boolean,
+    default: false
+  },
   duration: {
     type: Number,
     default: 750
@@ -99,7 +103,8 @@ export default {
       maxTextLenght: {
         first: 0,
         last: 0
-      }
+      },
+      count: 0
     }
   },
 
@@ -211,6 +216,7 @@ export default {
         .attr('dx', 0)
         .attr('transform', 'rotate(0)')
         .on('click', d => {
+          this.count++
           currentSelected = (currentSelected === d) ? null : d
           d3.event.stopPropagation()
           this.redraw()
@@ -236,7 +242,7 @@ export default {
         .attr('transform', d => translate(d, this.layout))
         .attr('opacity', 1))
 
-      const text = allNodes.select('text').text(d => d.data[this.nodeText])
+      const text = allNodes.select('text').text(d => d.data[this.nodeText] + this.showStat ? d.data['stat'] : '')
 
       const {transformText} = this.layout
       allNodes.each((d) => {
