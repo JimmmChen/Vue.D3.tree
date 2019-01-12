@@ -242,7 +242,7 @@ export default {
         .attr('transform', d => translate(d, this.layout))
         .attr('opacity', 1))
 
-      const text = allNodes.select('text').text(d => d.data[this.nodeText] + this.showStat ? d.data['stat'] : '')
+      const text = allNodes.select('text').text(d => d.data[this.nodeText] + (this.showStat ? d.data['stat'] : ''))
 
       const {transformText} = this.layout
       allNodes.each((d) => {
@@ -477,6 +477,10 @@ export default {
       deep: true
     },
 
+    showStat () {
+      this.redraw()
+    },
+
     type () {
       if (!this.internaldata.tree) {
         return
@@ -530,7 +534,7 @@ export default {
 }
 
 .treeclass .nodetree text {
-  font: 10px sans-serif;
+  font: 15px sans-serif;
   cursor: pointer;
 }
 
