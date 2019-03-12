@@ -118,7 +118,7 @@ export default {
 
     if (this.zoomable) {
       g = svg.append('g')
-      zoom = d3.zoom().scaleExtent([0.9, 8]).on('zoom', this.zoomed(g))
+      zoom = d3.zoom().scaleExtent([0.2, 8]).on('zoom', this.zoomed(g))
       svg.call(zoom).on('wheel', () => d3.event.preventDefault())
       svg.call(zoom.transform, d3.zoomIdentity)
     } else {
@@ -509,7 +509,7 @@ export default {
       const { svg, g } = this.internaldata
       let { zoom } = this.internaldata
       if (newValue) {
-        zoom = d3.zoom().scaleExtent([0.9, 8])
+        zoom = d3.zoom().scaleExtent([0.2, 8])
         zoom.on('zoom', this.zoomed(g))
         svg.call(zoom).on('wheel', () => d3.event.preventDefault())
         svg.call(zoom.transform, this.currentTransform || d3.zoomIdentity)
